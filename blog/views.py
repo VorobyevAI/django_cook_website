@@ -1,11 +1,17 @@
 from blog.models import Post
 from django.views.generic import ListView, DetailView
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse
+
+
+class HomeView(ListView):
+    model = Post
+    paginate_by = 9
+    template_name = "blog/home.html"
 
 
 class PostListView(ListView):
     model = Post
-    
+
     def get_queryset(self):
         return Post.objects.filter(category__slug=self.kwargs.get("slug")).select_related('category')
 
@@ -16,5 +22,3 @@ class PostDetailView(DetailView):
     slug_url_kwarg = 'post_slug'
 
 
-def home(request):
-    return render(request, 'base.html')
