@@ -4,6 +4,7 @@ from mptt.models import TreeForeignKey, MPTTModel
 from django.urls import reverse
 from ckeditor.fields import RichTextField
 
+
 class Category(MPTTModel):
     name = models.CharField(max_length=100)
     slug = models.SlugField(max_length=100)
@@ -44,7 +45,7 @@ class Post(models.Model):
     )
     tags = models.ManyToManyField(Tag, related_name='post')
     create_at = models.DateTimeField(auto_now_add=True)
-    slug = models.SlugField(max_length=200, default=True)
+    slug = models.SlugField(max_length=200, default=True, unique=True)
 
     def __str__(self):
         return self.title

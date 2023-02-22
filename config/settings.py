@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-yxb#+nj_+8v&vr&hgofjh$d58%o=@$6&gd4l=e+)r&!l&8og5@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.0.104', '127.0.0.1', ' localhost']
 
 
 # Application definition
@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'mptt',
 
     'blog',
+    'contact'
 ]
 
 MIDDLEWARE = [
