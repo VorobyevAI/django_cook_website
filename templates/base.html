@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="ru">
 {% load static %}
-{% autoescape off %}
+{% load social_tags cache %}
+
 
 
 <head>
@@ -70,6 +71,7 @@
     <!-- Humberger End -->
 
     <!-- Header Section Begin -->
+    {% cache 5000 header %}
     <header class="header">
         <div class="header__top">
             <div class="container">
@@ -108,9 +110,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">
-                    <div class="header__logo">
-                        <a href="./index.html"><img src="img/logo.png" alt=""></a>
-                    </div>
+
                 </div>
                 <div class="col-lg-3 col-md-3">
                     <div class="header__social">
@@ -122,11 +122,13 @@
         </div>
     </header>
  <hr>
+    {% endcache %}
     <!-- Header Section End -->
     {% block content %}
 
     {% endblock content %}
     <!-- Footer Section Begin -->
+    {% cache 5000 footer %}
     <hr>
     <footer class="footer">
         <div class="container-fluid">
@@ -175,14 +177,18 @@
     </div>
   </div>
     </footer>
+    {% endcache %}
     <!-- Footer Section End -->
 
     <!-- Search Begin -->
     <div class="search-model">
         <div class="h-100 d-flex align-items-center justify-content-center">
             <div class="search-close-switch">+</div>
-            <form class="search-model-form">
-                <input type="text" id="search-input" placeholder="Search here.....">
+            <form action="{% url 'search' %}" method="get" class="search-model-form">
+                <input type="text" id="search-input" placeholder="Найти....." name="q">
+                <button type="submit" class="btn1 btn">
+                    <span class="fa fa-search" aria-hidden="true"></span>
+                </button>
             </form>
         </div>
     </div>
@@ -195,5 +201,5 @@
     <script src="{% static 'js/owl.carousel.min.js' %}"></script>
     <script src="{% static 'js/main.js' %}"></script>
 </body>
-{% endautoescape %}
+
 </html>

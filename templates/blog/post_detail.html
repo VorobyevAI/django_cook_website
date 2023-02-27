@@ -79,16 +79,14 @@
 
           <div class="single-post__author__profile">
             <div class="single-post__author__profile__pic">
-              <img src="{{ about.get_first_image }}" alt="">
+
             </div>
             <div class="single-post__author__profile__text">
-              <h4>{{ about.name }}</h4>
-              <p>{{ about.mini_text|safe }}</p>
+
+
               <div class="single-post__author__profile__social">
 
-                {% for item in social_links %}
-                  <a href="{{ item.link }}"><img src="{{ item.icon.url }}"></a>
-                {% endfor %}
+
               </div>
             </div>
           </div>
@@ -99,11 +97,11 @@
             {% for comment in post.get_comments %}
               <div class="single-post__comment__item">
                 <div class="single-post__comment__item__pic">
-                  <img src="/static/img/categories/cat-2.jpg" alt="">
+                  <img src="/static/img/categories/anonim.jpg" alt="">
                 </div>
                 <div class="single-post__comment__item__text">
                   <h5>{{ comment.name }}</h5>
-                  <span>{{ comment.create_at }}</span>
+                  <span>{{ comment.create_at_com }}</span>
                   <p>{{ comment.message }}</p>
                 </div>
               </div>
@@ -113,16 +111,16 @@
             <div class="widget__title">
               <h4>Оставьте комментарий</h4>
             </div>
-<!--<form action="" method="post">-->
-<!--              {% csrf_token %}-->
-<!--              <div class="input-list">-->
-<!--                {{ form.name }}-->
-<!--                {{ form.email }}-->
-<!--                {{ form.website }}-->
-<!--              </div>-->
-<!--              {{ form.message }}-->
-<!--              <button type="submit" class="site-btn">Оставить отзыв</button>-->
-<!--            </form>-->
+<form action="{% url 'create_comment' pk=post.id %}" method="post">
+              {% csrf_token %}
+              <div class="input-list">
+                {{ form.name }}
+                {{ form.email }}
+                {{ form.website }}
+              </div>
+              {{ form.message }}
+              <button type="submit" class="site-btn">Оставить отзыв</button>
+            </form>
           </div>
         </div>
       </div>

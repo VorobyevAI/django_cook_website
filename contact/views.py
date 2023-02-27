@@ -18,6 +18,7 @@ class CreateContact(CreateView):
     success_url = '/'
 
 
+
 class AboutView(View):
     def get(self, request):
         about = About.objects.last()

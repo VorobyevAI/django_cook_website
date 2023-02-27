@@ -22,7 +22,7 @@ class About(admin.ModelAdmin):
 
 
 admin.site.register(ContactLink)
-admin.site.register( ImageAbout)
+admin.site.register(ImageAbout)
 admin.site.register(Social)
 
 
